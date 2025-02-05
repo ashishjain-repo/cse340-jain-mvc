@@ -1,8 +1,6 @@
-import { configDotenv } from "dotenv";
-configDotenv();
+const mode = process.env.MODE;
+const port = process.env.PORT;
 const reload = function(req, res, next) {
-    const mode = process.env.MODE;
-    const port = process.env.PORT;
     res.locals.isDevMode = mode.includes('dev');
     const devModeMsg = '<p class="dev-mode-msg">Warning: Development Mode Enabled</p>';
     const devModeStyle = 'body{background-color: skyblue;}';
