@@ -2,7 +2,6 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import categoryRoute from './src/routes/category/index.js'
 
 // Import all other required modules: Route handlers, Middleware, etc.
 import baseRoute from './src/routes/index.js';
@@ -33,7 +32,6 @@ app.use(layouts);
 
 // Use the home route for the root URL
 app.use('/', baseRoute);
-app.use('/category', categoryRoute)
 // Apply error handlers
 app.use(notFoundHandler);
 app.use(globalErrorHandler);

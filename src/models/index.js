@@ -1,13 +1,9 @@
-import dbPromise from "../database/index.js";
-
-const getClassifications = async () => {
+import dbPromise from '../database/index.js';
+ 
+const getNavigationLinks = async () => {
     const db = await dbPromise;
-    return await db.all('SELECT * FROM classification');
+    const links = await db.all('SELECT * FROM navigation');
+    return links;
 };
-
-const getGamesByClassification = async (classificationId) => {
-    const db = await dbPromise;
-    return await db.all('SELECT * FROM game WHERE classification_id = ?', [classificationId]);
-};
-
-export { getClassifications, getGamesByClassification }
+ 
+export { getNavigationLinks };
