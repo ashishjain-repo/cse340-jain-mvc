@@ -9,7 +9,7 @@ import baseRoute from './src/routes/index.js';
 import layouts from './src/middleware/layouts.js';
 import staticPaths from './src/middleware/static-paths.js';
 import { notFoundHandler, globalErrorHandler } from './src/middleware/error-handler.js';
-import reload from './src/middleware/live-reload.js';
+import reload from './src/middleware/node-env.js';
 
 // Get the current file path and directory name
 const __filename = fileURLToPath(import.meta.url);
