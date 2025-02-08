@@ -2,9 +2,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><%= title %></title>
 <link rel="stylesheet" href="/css/main.css">
-<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-<style>
-    <% if (styles.length > 0) { %>
-        <%- styles.join('\n') %>
-    <% } %>
-</style>
+<% if (styles && styles.length > 0) { %>
+    <% styles.forEach((style) => { %>
+        <%- style %>
+    <% }); %>
+<% } %>
+<% if (scripts && scripts.length > 0) { %>
+    <% scripts.forEach((script) => { %>
+        <%- script %>
+    <% }); %>
+<% } %>
