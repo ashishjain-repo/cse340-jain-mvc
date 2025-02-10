@@ -18,7 +18,7 @@ const getNav = async () => {
     classifications.forEach((row) => {
         const id = row.classification_id;
         const name = row.classification_name;
-        nav += `<li><a href="/caregory/${id}">${name}</a></li>`
+        nav += `<li><a href="/category/${id}">${name}</a></li>`
     });
     return `${nav}<li><a href="/About">About</a></li></ul></nav>`;
 };

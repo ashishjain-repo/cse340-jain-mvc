@@ -22,6 +22,9 @@ const mode = process.env.MODE || 'production';
 // Create an instance of an Express application
 const app = express();
 
+// Set the configuration mode for the application
+app.use(configMode);
+
 // Configure static paths for the Express application
 configureStaticPaths(app);
  
@@ -34,8 +37,6 @@ app.set('layout default', 'default');
 app.set('layouts', path.join(__dirname, 'src/views/layouts'));
 app.use(layouts);
 
-// Set the configuration mode for the application
-app.use(configMode);
  
 // Use the home route for the root URL
 app.use('/', baseRoute);

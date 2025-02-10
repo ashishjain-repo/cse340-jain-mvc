@@ -12,7 +12,7 @@ const configureSettingsBasedOnMode = async (req, res, next) => {
 
     if (res.locals.isDevMode) {
         // Add development mode warning
-        res.locals.devModeWarning = '<p class="dev-mode-msg">Site is in development mode<p>';
+        res.locals.devModeWarning = '<p class="dev-mode-msg">Site is in development mode!<p>';
 
         // Add a stylesheet that loads only in development mode
         res.locals.styles.push('<link rel="stylesheet" href="css/dev-mode.css">');
