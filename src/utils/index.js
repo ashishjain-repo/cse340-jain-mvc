@@ -1,4 +1,4 @@
-import { getNavigationLinks } from "../models/index.js";
+/* import { getNavigationLinks } from "../models/index.js";
 
 const getNav = async() => {
     const links = await getNavigationLinks();
@@ -9,4 +9,18 @@ const getNav = async() => {
     return `${nav}</ul></nav>`;
 };
 
-export { getNav };
+export { getNav }; */
+import {getClassifications} from '../models/index.js';
+
+const getNav = async () => {
+    const classifications = await getClassifications();
+    let nav = '<nav><ul>';
+    classifications.forEach((row) => {
+        const id = row.classification_id;
+        const name = row.classification_name;
+        nav += `<li><a href="/category/${id}">${name}</a></li>`
+    });
+    return `${nav}<li><a href="/About">About</a></li></ul></nav>`;
+};
+
+export { getNav }

@@ -9,6 +9,7 @@ import configMode from './src/middleware/config-mode.js';
 import layouts from './src/middleware/layouts.js';
 import configureStaticPaths from './src/middleware/static-paths.js';
 import { notFoundHandler, globalErrorHandler } from './src/middleware/error-handler.js';
+import categoryRoute from './src/routes/category/index.js'
  
 // Get the current file path and directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -20,6 +21,9 @@ const mode = process.env.MODE || 'production';
  
 // Create an instance of an Express application
 const app = express();
+
+// Set the configuration mode for the application
+app.use(configMode);
 
 // Configure static paths for the Express application
 configureStaticPaths(app);
@@ -33,12 +37,10 @@ app.set('layout default', 'default');
 app.set('layouts', path.join(__dirname, 'src/views/layouts'));
 app.use(layouts);
 
-// Set the configuration mode for the application
-app.use(configMode);
  
 // Use the home route for the root URL
 app.use('/', baseRoute);
-
+app.use('/category', categoryRoute);
 // Apply error handlers
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
