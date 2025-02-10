@@ -9,6 +9,7 @@ import configMode from './src/middleware/config-mode.js';
 import layouts from './src/middleware/layouts.js';
 import configureStaticPaths from './src/middleware/static-paths.js';
 import { notFoundHandler, globalErrorHandler } from './src/middleware/error-handler.js';
+import categoryRoute from './src/routes/category/index.js'
  
 // Get the current file path and directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -38,7 +39,7 @@ app.use(configMode);
  
 // Use the home route for the root URL
 app.use('/', baseRoute);
-
+app.use('/category', categoryRoute);
 // Apply error handlers
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
