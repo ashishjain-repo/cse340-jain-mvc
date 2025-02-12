@@ -9,7 +9,8 @@ import configMode from './src/middleware/config-mode.js';
 import layouts from './src/middleware/layouts.js';
 import configureStaticPaths from './src/middleware/static-paths.js';
 import { notFoundHandler, globalErrorHandler } from './src/middleware/error-handler.js';
-import categoryRoute from './src/routes/category/index.js'
+import categoryRoute from './src/routes/category/index.js';
+import { setupDatabase } from './src/database/index.js';
  
 // Get the current file path and directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -21,6 +22,9 @@ const mode = process.env.MODE || 'production';
  
 // Create an instance of an Express application
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // Set the configuration mode for the application
 app.use(configMode);
@@ -66,6 +70,7 @@ if (mode.includes('dev')) {
 }
  
 // Start the Express server
-app.listen(port, () => {
+app.listen(port, async () => {
+    await setupDatabase();
     console.log(`Server running on http://127.0.0.1:${port}`);
 });
