@@ -11,6 +11,7 @@ import configureStaticPaths from './src/middleware/static-paths.js';
 import { notFoundHandler, globalErrorHandler } from './src/middleware/error-handler.js';
 import categoryRoute from './src/routes/category/index.js';
 import { setupDatabase } from './src/database/index.js';
+import fileUploads from './src/middleware/file-upload.js';
  
 // Get the current file path and directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -28,6 +29,9 @@ app.use(express.urlencoded({extended: true}));
 
 // Set the configuration mode for the application
 app.use(configMode);
+
+// Middleware to process form data with file upload
+app.use(fileUploads)
 
 // Configure static paths for the Express application
 configureStaticPaths(app);
