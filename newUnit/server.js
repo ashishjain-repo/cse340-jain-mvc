@@ -10,6 +10,7 @@ import configNodeEnv from './src/middleware/node-env.js';
 import configureStaticPaths from './src/middleware/static-paths.js';
 import fileUploads from './src/middleware/file-uploads.js';
 import gameRoute from './src/routes/game/index.js';
+import accountRoute from './src/routes/account/index.js';
 import layouts from './src/middleware/layouts.js';
 import { notFoundHandler, globalErrorHandler } from './src/middleware/error-handler.js';
 import { setupDatabase } from './src/database/index.js';
@@ -57,6 +58,9 @@ app.use('/game', gameRoute);
 
 // Handle routes specific to the categories
 app.use('/category', categoryRoute);
+
+// Handle routes specific to the accounts
+app.use('/account', accountRoute);
 
 // Apply error handlers
 app.use(notFoundHandler);
