@@ -3,6 +3,11 @@
 <head>
     <%- include('../partials/head') %>
 </head>
+<% if (flash) { %>
+    <% flash.forEach((obj) => { %>
+        <%- include('../partials/flash', { type: obj.type, message: obj.message }) %>
+    <% }); %>
+<% } %>
 <body>
     <header>
         <%- include('../partials/header') %>
