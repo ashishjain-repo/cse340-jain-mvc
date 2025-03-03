@@ -35,8 +35,6 @@ const mode = process.env.MODE || 'production';
 // Create an instance of an Express application
 const app = express();
 
-// Configure the application based on environment settings
-app.use(configNodeEnv);
 
 // Session Middleware
 app.use(session({
@@ -54,6 +52,9 @@ app.use(session({
         httpOnly: true,            // Prevents client-side access to the cookie
     }
 }));
+
+// Configure the application based on environment settings
+app.use(configNodeEnv);
 
 // Configure static paths for the Express application
 configureStaticPaths(app);
