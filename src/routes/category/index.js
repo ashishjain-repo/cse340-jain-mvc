@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getGamesByClassification, getClassifications, getGameById } from "../../models/index.js";
+import { getGamesByClassification, getClassifications, getGameById, deleteGame } from "../../models/index.js";
 import { addNewGame } from "../../models/category.js";
 import path from "path";
 import fs from 'fs';
@@ -97,4 +97,5 @@ router.post('/edit/:id', async (req, res) => {
     // Return to game category view page
     res.redirect(`/category/view/${classification_id}`);
 });
+
 export default router;
