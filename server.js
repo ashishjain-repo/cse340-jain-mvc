@@ -10,6 +10,7 @@ import layouts from './src/middleware/layouts.js';
 import configureStaticPaths from './src/middleware/static-paths.js';
 import { notFoundHandler, globalErrorHandler } from './src/middleware/error-handler.js';
 import categoryRoute from './src/routes/category/index.js';
+import gameRoute from './src/routes/game/index.js';
 import { setupDatabase } from './src/database/index.js';
 import fileUploads from './src/middleware/file-upload.js';
  
@@ -49,6 +50,7 @@ app.use(layouts);
 // Use the home route for the root URL
 app.use('/', baseRoute);
 app.use('/category', categoryRoute);
+app.use('/game', gameRoute);
 // Apply error handlers
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
