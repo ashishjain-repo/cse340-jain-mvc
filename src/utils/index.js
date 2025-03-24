@@ -1,26 +1,22 @@
-/* import { getNavigationLinks } from "../models/index.js";
-
-const getNav = async() => {
-    const links = await getNavigationLinks();
-    let nav = '<nav><ul>';
-    links.forEach((linkInfo) => {
-        nav += `<li><a href="${linkInfo.route}">${linkInfo.name}</a></li>`
-    });
-    return `${nav}</ul></nav>`;
-};
-
-export { getNav }; */
-import {getClassifications} from '../models/index.js';
+import { getCategories } from '../models/category.js';
 
 const getNav = async () => {
-    const classifications = await getClassifications();
+    const categories = await getCategories();
     let nav = '<nav><ul>';
-    classifications.forEach((row) => {
-        const id = row.classification_id;
-        const name = row.classification_name;
+    categories.forEach((row) => {
+        const id = row.category_id;
+        const name = row.category_name;
         nav += `<li><a href="/category/view/${id}">${name}</a></li>`
     });
-    return `${nav}<li><a href="/category/add">Add Game</a></li><li><a href="/About">About</a></li></ul></nav>`;
+    return `
+    ${nav}
+        <li><a href="/game/add">Add Game</a></li>
+        <li><a href="/category/add">Add Category</a></li>
+        <li><a href="/category/delete">Delete Category</a></li>
+        <li><a href="/About">About Me</a></li>
+        </ul>
+    </nav>`;
 };
 
-export { getNav }
+
+export { getNav };

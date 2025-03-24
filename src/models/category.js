@@ -1,12 +1,18 @@
-import dbPromise from "../database/index.js";
+import dbPromise from '../database/index.js';
 
-const addNewGame = async (name, description, classification_id, image_path = '') => {
+const addCategory = async (category) => {
     const db = await dbPromise;
-    const sql = `
-        INSERT INTO game (game_name, game_description, classification_id, image_path)
-        VALUES (?, ?, ?, ?)
-    `;
-    return await db.run(sql, [name, description, classification_id, image_path]);
+    return await db.run('INSERT INTO category (category_name) VALUES (?)', category);
 };
 
-export { addNewGame }
+const deleteCategory = async (categoryId) => {
+    const db = await dbPromise;
+    return await db.run('DELETE FROM category WHERE category_id = ?', categoryId);
+};
+
+const getCategories = async () => {
+    const db = await dbPromise;
+    return await db.all('SELECT * FROM category');
+};
+
+export { addCategory, deleteCategory, getCategories };
